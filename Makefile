@@ -1,6 +1,5 @@
 all:
-	@echo "Opciones: crud, assets, cache"
-
+	@echo "Opciones: crud, assets, cache, permisos, db, install"
 	@echo "Generar entidades: php app/console doctrine:generate:entities Acme/UserBundle/Entity/User"
 
 crud:
