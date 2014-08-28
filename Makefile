@@ -12,8 +12,8 @@ assets:
 
 cache:
 	make permisos
-	sudo su www-data -c "php app/console cache:clear"
-	sudo su www-data -c "php app/console cache:clear --env=prod --no-debug"
+	sudo php app/console cache:clear
+	sudo php app/console cache:clear --env=prod --no-debug
 	make permisos
 
 permisos:
