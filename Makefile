@@ -12,13 +12,17 @@ assets:
 
 cache:
 	make permisos
+	mkdir -p app/cache/dev
+	mkdir -p app/cache/prod
 	sudo php app/console cache:clear
 	sudo php app/console cache:clear --env=prod --no-debug
 	make permisos
 
 permisos:
+	sudo chown $(shell whoami):www-data web/uploads -R
 	sudo chown $(shell whoami):www-data app/cache -R
 	sudo chown $(shell whoami):www-data app/logs -R
+	sudo chmod g+rw web/uploads -R
 	sudo chmod g+rw app/cache -R
 	sudo chmod g+rw app/logs -R
 
