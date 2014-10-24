@@ -12,13 +12,14 @@ assets:
 
 cache:
 	make permisos
-	mkdir -p app/cache/dev
-	mkdir -p app/cache/prod
 	sudo php app/console cache:clear
 	sudo php app/console cache:clear --env=prod --no-debug
 	make permisos
 
 permisos:
+	mkdir -p app/cache/dev
+	mkdir -p app/cache/prod
+	mkdir -p web/uploads
 	sudo chown $(shell whoami):www-data web/uploads -R
 	sudo chown $(shell whoami):www-data app/cache -R
 	sudo chown $(shell whoami):www-data app/logs -R
@@ -28,9 +29,9 @@ permisos:
 
 db:
 	make cache
-	php app/console doctrine:schema:drop --force
+	#php app/console doctrine:schema:drop --force
 	php app/console doctrine:schema:create
-	php app/console doctrine:fixtures:load --no-interaction
+	#php app/console doctrine:fixtures:load --no-interaction
 	make cache
 
 install:
